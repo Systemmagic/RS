@@ -1,0 +1,4 @@
+# file: D:\workspace\RS\data_preprocessing.py
+# hypothesis_version: 6.150.2
+
+[0.0, 0.5, 1.0, 128, '*.tif', 'GTiff', 'file_paths', 'index', 'orig_h', 'orig_w', 'padded_size', 'padding_info', 'x_offset', 'y_offset']

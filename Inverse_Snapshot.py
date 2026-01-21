@@ -14,7 +14,6 @@ rf_model = joblib.load(model_path)
 # 获取排序后的文件列表，确保时间顺序 (20230201, 20230202...)
 files = sorted([f for f in os.listdir(input_dir) if f.endswith('.tif')])
 
-
 # ================= 2. 空间掩膜与元数据初始化 =================
 # 我们以第一张图为基准，确定地理范围和有效像素（陆地/非云区）
 print("初始化空间掩膜...")
@@ -34,7 +33,7 @@ print(f"全图尺寸: {h}x{w}, 有效建模像素: {len(valid_idx)}")
 # 创建一个列表，用来存储每一天的“有效像素列向量”
 snapshot_vectors = []
 
-print("开始批量反演 89 天数据...")
+print("开始批量反演 28 天数据...")
 for f in files:
     with rasterio.open(os.path.join(input_dir, f)) as src:
         # 读取 5 个波段: [AOD, TEMP, WIND, PRESS, RAIN]
@@ -43,6 +42,9 @@ for f in files:
         
         # 陷阱处理：将 (C, H, W) 转为 (H*W, C) 方便模型读取
         X_all = img_data.reshape(c, -1).T
+        
+        # 提取有效像素进行预测，避免对边界外的 NaN 进行无效计算
+        X_valid = X_all[valid_idx, :]
         
         # 预测该日的 PM2.5 (只针对有效区域)
         pm25_valid = rf_model.predict(X_valid)

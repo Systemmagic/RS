@@ -1,0 +1,4 @@
+# file: D:\workspace\RS\config.py
+# hypothesis_version: 6.150.2
+
+[0.0001, 0.1, 0.5, 0.6, 1.0, 15.0, 128, 2048, '--batch_size', '--config', '--data_dir', '--encoder_depth', '--encoder_type', '--epochs', '--img_size', '--latent_dim', '--learning_rate', '--output_dir', '--perceptual_weight', '--pred_weight', '--random_seed', '--recon_weight', '--rotation_range', '--sequence_length', '--spectral_weight', '--use_attention', '--use_augmentation', '--use_multiscale', 'Batch size', 'CZT_PM25_Daily', 'Config', 'Data directory path', 'Encoder depth', 'Latent dimension', 'Learning rate', 'Number of epochs', 'Output directory', 'Sequence length', '_', '__dict__', '__main__', 'config', 'config.yaml', 'r', 'resnet', 'results', 'simple', 'true', 'w']
